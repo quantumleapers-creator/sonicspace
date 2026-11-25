@@ -40,67 +40,22 @@ A visitor can explore a 3D listening room, move individual sound markers around 
 - A modern desktop browser with Web Audio API and WebGL support
 - Headphones recommended for the spatial listening experiment
 
-## Run locally
+## Explore the experience
 
-```bash
-npm install
-npm run dev
-```
+Open the live demo: **[SonicSpace](https://sonicspace-hackathon639-7445.vercel.app)**
 
-Open `http://localhost:3000`, then press **Play scene**. Browsers require a direct user gesture before they allow audio playback.
+1. Start with the two-minute introduction to surround sound and Dolby Atmos.
+2. Follow the three-step guide to choose a sound, position it in the room, and listen.
+3. Drag the colored sound objects around the listener, including above and below ear level.
+4. Use **Immersive view** to expand the 3D room.
+5. Hover over, focus, or tap the information icons to learn what each concept and control means.
 
-## Production build
+Headphones are recommended for the listening demonstration. Audio starts only after you press **Play scene**.
 
-```bash
-npm run typecheck
-npm run lint
-npm run build
-npm start
-```
+## What to understand
 
-Commit the generated `package-lock.json` after running `npm install` so the CI and Vercel builds resolve the exact same dependency tree.
+SonicSpace is an educational visualization of spatial-audio ideas. It demonstrates how sounds can be placed around a listener and how object-based audio can include height. It is not a Dolby Atmos decoder or certified renderer; its headphone demonstration uses simplified browser-based HRTF positioning.
 
-## Deploy to Vercel
+## Technology
 
-1. Push this repository to GitHub.
-2. In Vercel, choose **Add New → Project** and import the repository.
-3. Select the Next.js framework preset.
-4. Use `npm run build` as the build command. No environment variables are required for the current demo.
-5. Deploy and test the public HTTPS URL with headphones.
-
-## Project structure
-
-```text
-src/
-├── app/
-│   ├── layout.tsx             # page metadata and root layout
-│   ├── page.tsx               # main route
-│   └── globals.css            # typography, theme and responsive layout
-├── components/
-│   ├── room/RoomScene.tsx     # 3D room and draggable sound markers
-│   ├── studio/Studio.tsx      # story, guided tour and interactive controls
-│   ├── studio/Waveform.tsx    # waveform preview for uploaded files
-│   └── ui/InfoTip.tsx         # accessible hover/focus explanations
-├── lib/audio/                 # browser audio engine and listening profiles
-├── store/                     # shared application state
-└── types/                      # TypeScript data contracts
-
-docs/
-├── HACKATHON_STORY.md         # two-minute pitch and visitor journey
-├── BEGINNER_CODE_GUIDE.md     # beginner code walkthrough
-├── INTERVIEW_PREP.md          # interview question practice
-└── QA_CHECKLIST.md            # release test checklist
-```
-
-## Honest limitations
-
-- Audio files are decoded and played locally in the browser. The project does not upload them to a server.
-- Scene JSON export stores settings, not the actual bytes of uploaded audio files.
-- The 3D room is a teaching visualization. The audio engine provides simplified HRTF direction cues; it does not model measured room reflections, occlusion, speaker calibration or the full Dolby Atmos rendering pipeline.
-- The height slider changes the visual object's Y position and passes that coordinate to the browser panner. Perceived height varies by browser, device and listener.
-- The starter effects are generated using Web Audio nodes, not professional field recordings.
-- Google Sans Flex is requested from Google Fonts at runtime; if that connection is unavailable, the UI falls back to system sans-serif fonts.
-
-## Documentation
-
-See `docs/HACKATHON_STORY.md` for the short pitch and visitor journey, `docs/BEGINNER_CODE_GUIDE.md` for the code walkthrough, `docs/INTERVIEW_PREP.md` for interview preparation, and `docs/QA_CHECKLIST.md` for final testing.
+Built with Next.js, React, TypeScript, Three.js / React Three Fiber, the Web Audio API, and Zustand.
