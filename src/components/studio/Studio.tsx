@@ -150,7 +150,6 @@ export default function Studio() {
     setNotice("Scene settings exported. Uploaded sound files are not included.");
   };
 
-  };
 
   const loadProject = async (file: File) => {
     try {
